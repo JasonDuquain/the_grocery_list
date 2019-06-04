@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom'
-import axios from 'axios'
+
+
+import Signup from './components/User/signup';
+import Login from './components/User/login';
+import Nav from './components/nav';
+import Home from './components/home';
+
+import './App.scss';
+
+import axios from 'axios';
+
 
 
 class App extends Component {
@@ -9,12 +18,19 @@ class App extends Component {
     
   }
     
-   
+	componentDidMount() {
+        axios.get('/test/')
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err))
+    }
  
     render() {
         return (
           <div className="App">
-            
+            <Nav />
+            <Home />
+            <Signup />
+            <Login />
           </div>
         );
   }
