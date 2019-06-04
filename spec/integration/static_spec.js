@@ -7,6 +7,8 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 9000;
 
 //setup first basic test to ensure testing functionality - working
 
+/*
+
 describe('routes: /', () => {
     
     describe('GET /test', () => {
@@ -22,4 +24,5 @@ describe('routes: /', () => {
     
 }) 
 
+*/
 

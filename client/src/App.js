@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom';
 
 
 import Signup from './components/User/signup';
@@ -18,19 +19,19 @@ class App extends Component {
     
   }
     
-	componentDidMount() {
-        axios.get('/test/')
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err))
-    }
+	
  
     render() {
         return (
           <div className="App">
             <Nav />
-            <Home />
-            <Signup />
-            <Login />
+            
+            <Route path="/login" 
+                component={Login}
+            />
+            <Route path="/signup"
+                component={Signup}
+            />
           </div>
         );
   }
