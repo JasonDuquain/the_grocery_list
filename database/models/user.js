@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
 mongoose.promise = Promise;
 
-
 // ADD VALIDATIONS!!!
 const userSchema = new Schema({
 
@@ -20,12 +19,13 @@ const userSchema = new Schema({
 
 });
 
-userSchema.methods.checkPassword = function (inputPassword) {
-    return bcrypt.compareSync(inputPassword, this.password);
-};
 
 userSchema.methods.hashPassword = function(plainTextPassword) {
     return bcrypt.hashSync(plainTextPassword, 10)
+};
+
+userSchema.methods.checkPassword = function(inputPassword) {
+    return bcrypt.compareSync(inputPassword, this.password);
 };
 
 
@@ -41,6 +41,5 @@ userSchema.pre('save', function (next) {
 
 
 
-
 const User = mongoose.model('User', userSchema)
-module.exports = User
+module.exports = User;

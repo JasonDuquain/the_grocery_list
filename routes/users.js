@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
 
 //*** for testing only - remove later ***
 router.get('/', (req, res, next) => {
-    User.find()
+    User.find().count()
     .then(users => res.json(users))
     .catch(err => res.json(err))
 });

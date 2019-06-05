@@ -16,15 +16,10 @@ class Signup extends Component {
 		this.handleChange = this.handleChange.bind(this);
 	}
     
-    
-    
     componentDidMount() {
-        axios.get(/user/)
-        .then(users => console.log(users))
-        .catch(err => console.log(err))
+        axios.get('/user/')
+        .then(users => console.log(users.data.length))
     }
-    
-    
     
     handleChange(e) {
 		this.setState({ [e.target.name]: e.target.value });
@@ -46,9 +41,8 @@ class Signup extends Component {
 			password: password
 		})
         .then(response => {
-            console.log(response);
 				if (!response.data.error) {
-					console.log('successful signup')
+					alert('success - redirecting to login page')
 					this.setState( {redirectTo: '/login'} );
 				} else {
 					alert('username already exists');
@@ -59,7 +53,7 @@ class Signup extends Component {
 	
     render() {
         if (this.state.redirectTo) {
-            <Redirect to={{ pathname: this.state.redirectTo }} />
+            return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             return (
                 <div>
