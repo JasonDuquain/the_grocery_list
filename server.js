@@ -20,7 +20,7 @@ const users = require('./routes/users');
 app.use(session({
 		secret: process.env.SECRET, 
 		resave: false, 
-		saveUninitialized: false 
+		saveUninitialized: false
 	})
 );
 
