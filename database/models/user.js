@@ -21,7 +21,7 @@ const userSchema = new Schema({
 
 
 userSchema.methods.hashPassword = function(plainTextPassword) {
-    return bcrypt.hashSync(plainTextPassword, 10)
+    return bcrypt.hashSync(plainTextPassword, 10);
 };
 
 userSchema.methods.checkPassword = function(inputPassword) {

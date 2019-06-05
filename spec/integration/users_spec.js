@@ -65,7 +65,6 @@ describe('routes: /signup', () => {
             }, (error, response) => {
                 User.find().count()
                 .then(user => {
-                    // check to make sure the user count did not increase - i.e that a new user was NOT added to the DB
                     expect(user).toEqual(totalUsers);
                     done(); 
                 })
@@ -74,6 +73,58 @@ describe('routes: /signup', () => {
         
     });
     
+
+});
+
+//** make sure the beforeAll does not mess these up..if so move to another file
+
+describe('routes: /login', () => {
+
+    describe('POST /user/login', () => {
+        
+        it('should log a user in with valid credentials and create a session', (done) => {
+            request.post({
+                url: `${expressBaseUrl}/user/login`,
+                form: {
+                   username: 'jef',
+                   password: 'jef' 
+                }
+                
+            }, (error, response) => {
+                expect(response.statusCode).toBe(200);
+                expect(response.sessionID).not.toBeNull();
+                done(); 
+            });
+        }); 
+        
+        it('should NOT log a user in with invalid creds and should not create a session', (done) => {
+            request.post({
+                url: `${expressBaseUrl}/user/login`,
+                form: {
+                   username: 'no',
+                   password: 'way' 
+                }
+                
+            }, (error, response) => {
+                expect(response.statusCode).toBe(401);
+                expect(response.sessionID).toBeUndefined();
+                done(); 
+            });
+        }); 
+        
+    });
     
+    describe('POST /user/logout', () => {
+        
+        it('should logout a user with a valid session', (done) => {
+            request.post(`${expressBaseUrl}/user/logout`, (error, response) => {
+                expect(response.statusCode).toBe(200);
+                done(); 
+            });
+        }); 
+        
+        
+        
+    });
     
-}) ;
+});

@@ -4,15 +4,24 @@ import React, { Component } from 'react';
 class Home extends Component {
     constructor() {
         super();
+        
     }
 
     render() {
-        return (
-          <div>
-            HOMEPAGE - Please sign up/login to get started
-          </div>
-        );
-        
+
+        if (this.props.loggedIn) {
+            return (
+              <div>
+                CREATE TODO PAGE HERE
+              </div>
+            );
+        } else {
+            return (
+              <div>
+                Please sign up/login to get started
+              </div>
+            );
+        }
         
     }
 }

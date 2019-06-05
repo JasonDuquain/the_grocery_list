@@ -15,12 +15,7 @@ class Signup extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
-    
-    componentDidMount() {
-        axios.get('/user/')
-        .then(users => console.log(users.data.length))
-    }
-    
+
     handleChange(e) {
 		this.setState({ [e.target.name]: e.target.value });
 	}
