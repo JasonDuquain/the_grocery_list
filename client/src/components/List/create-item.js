@@ -22,8 +22,22 @@ class CreateItem extends Component {
     
     handleSubmit(e) {
         e.preventDefault();
-        console.log(this.state.name);
         
+        const item = {
+            name: this.state.name,
+            quantity: this.state.quantity,
+            purchased: this.state.purchased
+        }
+        
+        axios.post('/items/add/', item)
+            .then(res => console.log(res.data))
+            .catch((err) => console.log(err))
+        
+        this.setState({
+            name: '',
+            quantity: 1,
+            purchased: false
+        })
     }
     
     render() {

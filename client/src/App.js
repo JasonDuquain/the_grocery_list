@@ -5,6 +5,7 @@ import Signup from './components/User/signup';
 import Login from './components/User/login';
 import Nav from './components/nav';
 import Home from './components/home';
+import ItemList from './components/List/item-list';
 
 import './App.scss';
 import axios from 'axios';
@@ -64,6 +65,9 @@ class App extends Component {
                 <Login updateState={this.updateState} />}
             />
             <Route path="/signup" component={Signup} />
+            <Route path="/list" render={() =>
+                <ItemList />}
+            />
           </div>
         );
   }

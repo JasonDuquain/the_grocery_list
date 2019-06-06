@@ -4,16 +4,6 @@ const User = require('../database/models/user');
 const passport = require('../passport');
 
 
-const request = require('request');
-
-request({
-    url: '/',
-    json: true
-}, (error, response) => {
-    console.log(JSON.stringify(response, undefined, 2))
-});
-
-
 router.post('/', (req, res) => {
     
     User.findOne({ username: req.body.username }, (err, user) => {
@@ -27,11 +17,12 @@ router.post('/', (req, res) => {
                 username: req.body.username,
                 password: req.body.password
             })
-            newUser.save((err, user) => {
-                if (err) {
-                    return res.json(err);
-                }
-                return res.json(user)
+            newUser.save()
+            .then(user => {
+                res.status(201).json({message: "User created"});
+            })
+            .catch(err => {
+                res.status(500).json({error: err});
             })
         }
     });
