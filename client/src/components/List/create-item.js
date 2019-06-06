@@ -59,6 +59,8 @@ class CreateItem extends Component {
                         <label htmlFor="quantity">Quantity:</label>
                         <input  
                             type="number"
+                            min="1"
+                            max="99999"
                             name="quantity"
                             id="quantity"
                             value={this.state.quantity}
@@ -66,7 +68,7 @@ class CreateItem extends Component {
                         />
                     </div>
                     <div>
-                        <button onClick={this.handleSubmit}>New Item</button>
+                        <button onClick={this.handleSubmit}>Add Item</button>
                     </div>
                 </form>
             </div>

@@ -32,9 +32,29 @@ router.get('/', (req, res) => {
     })
 });
 
+router.post('/delete/:id', (req, res) => {
+    
+    Item.findByIdAndRemove({_id: req.params.id})
+    .then(item => {
+            res.status(200).json({message: "item removed " + item});
+        })
+        .catch(err => {
+            res.status(400).json({error: err});
+        })
+})
 
 
 
+/*
+
+businessRoutes.route('/delete/:id').get(function (req, res) {
+    Business.findByIdAndRemove({_id: req.params.id}, function(err, business){
+        if(err) res.json(err);
+        else res.json('Successfully removed');
+    });
+});
+
+*/
 
 
 

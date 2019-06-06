@@ -45,7 +45,6 @@ beforeAll((done) => {
 });
 
 
-
 describe('routes: /items', () => {
 
     describe('POST /items/add', () => {
@@ -61,6 +60,9 @@ describe('routes: /items', () => {
                 
             }, (error, response) => {
                 //console.log(Item)
+                
+                done();
+                
                 Item.find()
                 .then(item => {
                     expect(response.statusCode).toBe(201);
@@ -127,6 +129,7 @@ describe('routes: /items', () => {
         });
     
     });
+    
     
 });
 
