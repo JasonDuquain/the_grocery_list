@@ -1,6 +1,4 @@
-require('dotenv').config() // PUT THIS ON THE FIRST LINE!
-
-//// TODO: require jest and request here or if not in the test files
+require('dotenv').config() // PUT THIS ON THE FIRST LINE
 
 const express = require('express');
 const path = require('path');
@@ -15,6 +13,7 @@ const PORT = process.env.PORT || 8080;
 
 //// Routes
 const users = require('./routes/users');
+const items = require('./routes/items');
 
 //// express session
 app.use(session({
@@ -39,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 //// Routes
 app.use('/user', users);
-
+app.use('/items', items)
 
 
 //****TODO: add a conditional for public/build etc ??

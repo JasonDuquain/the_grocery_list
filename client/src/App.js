@@ -10,7 +10,6 @@ import './App.scss';
 import axios from 'axios';
 
 
-
 class App extends Component {
     constructor() {
         super();
@@ -19,11 +18,34 @@ class App extends Component {
             username: null
         }
     
-        this.updateUser = this.updateUser.bind(this);
+        this.updateState = this.updateState.bind(this);
       
     }
     
-    updateUser(userObject) {
+    /* 
+    fix for logout on refresh - look at local/sessionStorage for an alternate fix:
+    
+    https://stackoverflow.com/questions/48845057/keep-user-logged-in-on-refresh-using-local-storage-with-react
+    
+    https://stackoverflow.com/questions/53830022/passportjs-get-details-of-logged-in-user-on-page-refresh-in-react-app/53831128
+    */
+    componentDidMount() {
+        axios.get('/user/').then(response => {
+            if (response.data.user) {
+            this.setState({
+              loggedIn: true,
+              username: response.data.user.username
+            })
+            } else {
+                this.setState({
+                  loggedIn: false,
+                  username: null
+                })
+            }
+        })
+    }
+    
+    updateState(userObject) {
         this.setState(userObject);
     }
     
@@ -31,7 +53,7 @@ class App extends Component {
     render() {
         return (
           <div className="App">
-            <Nav updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+            <Nav updateUser={this.updateState} loggedIn={this.state.loggedIn} />
             {this.state.loggedIn &&
               <p>Hello {this.state.username}!</p>
             }
@@ -39,7 +61,7 @@ class App extends Component {
                 <Home loggedIn={this.state.loggedIn} />}
             />
             <Route path="/login" render={() =>
-                <Login updateUser={this.updateUser} />}
+                <Login updateState={this.updateState} />}
             />
             <Route path="/signup" component={Signup} />
           </div>

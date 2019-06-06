@@ -42,30 +42,26 @@ router.post('/login', function (req, res, next) {
         next()
     },
     passport.authenticate('local'), (req, res) => {
-        var userInfo = {
+        var user = {
             username: req.user.username
         };
-        console.log(userInfo); // { username: 'pat' }
-        res.send(userInfo);
+        console.log(user); // { username: 'pat' }
+        res.send(user);
     }
 );
 
 router.post('/logout', (req, res) => {
     if (req.user) {
-        req.logout();
-        
-        console.log(res);
-        
+        req.logout();    
         res.send({ message: 'user logging out' })
     } else {
         res.send({ message: 'user is not loggged in' })
     }
 });
 
-// for testing only - update or remove later 
-/*router.get('/', (req, res) => {
-    console.log(res.json())
-});*/
+router.get('/', (req, res, next) => {
+    (req.user) ? res.json({ user: req.user }) : res.json({ user: null });
+});
 
 
 module.exports = router;

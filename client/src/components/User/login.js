@@ -9,7 +9,7 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            redirectTo: null
+            redirectTo: ''
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,7 +29,7 @@ class Login extends Component {
             })
             .then(response => {
                 if (response.status === 200) {
-                    this.props.updateUser({
+                    this.props.updateState({
                         loggedIn: true,
                         username: response.data.username
                     })

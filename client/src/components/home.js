@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CreateItem from './List/create-item';
 
 
 class Home extends Component {
@@ -12,7 +13,7 @@ class Home extends Component {
         if (this.props.loggedIn) {
             return (
               <div>
-                CREATE TODO PAGE HERE
+                <CreateItem />
               </div>
             );
         } else {

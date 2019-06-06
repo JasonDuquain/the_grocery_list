@@ -55,7 +55,7 @@ class Signup extends Component {
                     <h1>Signup to create your shopping list</h1>
                     <form>
                         <div>
-                            <label htmlFor="username">Username: </label>
+                            <label htmlFor="username">Username:</label>
                             <input
                                 type="text"
                                 name="username"
@@ -63,7 +63,7 @@ class Signup extends Component {
                                 value={this.state.username}
                                 onChange={this.handleChange}
                             />
-                            <label htmlFor="password">Password: </label>
+                            <label htmlFor="password">Password:</label>
                             <input
                                 type="password"
                                 name="password"
@@ -71,7 +71,7 @@ class Signup extends Component {
                                 value={this.state.password}
                                 onChange={this.handleChange}
                             />
-                            <label htmlFor="confirmPassword">Confirm password: </label>
+                            <label htmlFor="confirmPassword">Confirm password:</label>
                             <input
                                 type="password"
                                 name="confirmPassword"
@@ -79,7 +79,9 @@ class Signup extends Component {
                                 value={this.state.confirmPassword}
                                 onChange={this.handleChange}
                             />
-                        <button onClick={this.handleSubmit}>Sign up</button>
+                            <div>
+                                <button onClick={this.handleSubmit}>Sign up</button>
+                            </div>
                         </div>
                     </form>
                 </div>

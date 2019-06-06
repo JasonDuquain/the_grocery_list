@@ -24,6 +24,7 @@ class Nav extends Component {
               loggedIn: false,
               username: null
             })
+              
           }
         }).catch(err => {
             console.log(err)
@@ -45,7 +46,6 @@ class Nav extends Component {
                                 <Link to="/list">
                                     <span>TODOS</span>
                                 </Link>
-
                             </section>
                         ) : (
                             <section>
@@ -60,9 +60,6 @@ class Nav extends Component {
                                 </Link>
                             </section>
                             )}
-                    </div>
-                    <div>
-                        <h1>Sign up</h1>
                     </div>
                 </header>
             </div>
