@@ -8,6 +8,9 @@ class ItemList extends Component {
     constructor(props) {
         super(props);
         this.state = { items: [] }
+        
+        /* Dont think this is needed since the fn is passed inside an anonymous fn */
+        //this.handleTogglePurchase = this.handleTogglePurchase.bind(this);
     }
     
     componentDidMount() {
@@ -17,6 +20,13 @@ class ItemList extends Component {
                 this.setState( {items: response.data} );
             })
             .catch(err => console.log(err));
+    }
+    
+    handleTogglePurchase(index) {
+        console.log(this.state.items[index].purchased)
+        this.setState((prevState) => {
+            this.state.items[index].purchased = !prevState.items[index].purchased;
+        })
     }
     
     render() {
@@ -37,7 +47,7 @@ class ItemList extends Component {
                     </thead>
                     <tbody>
                         {
-                            this.state.items.map((item, idx) => <ItemRow item={item} key={idx} />)
+                            this.state.items.map((item, idx) => <ItemRow item={item} key={idx} handleTogglePurchase={() => this.handleTogglePurchase(idx)} />)
                         }
                     </tbody>
                 </table>

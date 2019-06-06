@@ -13,6 +13,7 @@ Items are getting deleted but not sure how state is updated in the parent?? But 
 //// Add edit link and maybe a checkbox for the complted prop
 
 class ItemRow extends Component {
+    
     constructor() {
         super();
         this.handleDelete = this.handleDelete.bind(this);
@@ -31,7 +32,7 @@ class ItemRow extends Component {
                 {console.log(this.props)} 
                 <td>{this.props.item.name}</td>    
                 <td>{this.props.item.quantity}</td>       
-                <td>{this.props.item.purchased}</td> 
+                <td><button onClick={this.props.handleTogglePurchase}>{this.props.item.purchased === false ? 'Purchase' : 'Unpurchase'}</button></td> 
                 <td>EDIT BTN/LINK</td> 
                 <td><button onClick={this.handleDelete}>Delete</button></td> 
             </tr>
