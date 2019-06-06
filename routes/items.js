@@ -4,6 +4,11 @@ const Item = require('../database/models/item');
 
 
 router.post('/add', (req, res) => {
+    
+    if (!req.body.name && !req.body.quantity) {
+        return res.status(400).json({error: "please enter the correct fields: name and quantity"});
+    }
+
     let item = new Item(req.body);
     item.save()
     .then(item => {
@@ -17,12 +22,13 @@ router.post('/add', (req, res) => {
 router.get('/', (req, res) => {
     Item.find()
     .then(item => {
+        //if no items are in the DB it will return an empty array *** may need to account for this ****
         
-        // this has to be just an item obj or it wont parse correctly inside items-list
+        // this has to be just an item obj or it wont parse correctly inside items-list.js
         res.status(200).json(item);
     })
     .catch(err => {
-        res.status(400).send("getting items failed")
+        res.status(400).json({error: err});
     })
 });
 

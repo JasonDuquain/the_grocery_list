@@ -29,7 +29,9 @@ class ItemList extends Component {
                         <tr>
                             <th>Name</th>
                             <th>Quantity</th>
-                            <th>Completed</th>
+                            <th>Purchased</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>

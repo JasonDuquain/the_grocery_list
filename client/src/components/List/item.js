@@ -8,9 +8,9 @@ const ItemRow = (props) => (
     
     <tr>
         {console.log(props)} 
-        <td>{props.name}</td>    
-        <td>{props.quantity}</td>       
-        <td>{props.completed}</td> 
+        <td>{props.item.name}</td>    
+        <td>{props.item.quantity}</td>       
+        <td>{props.item.purchased}</td> 
         <td>EDIT BTN/LINK</td> 
         <td>DELETE BTN/LINK</td> 
     </tr>
