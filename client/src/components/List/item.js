@@ -30,8 +30,8 @@ class ItemRow extends Component {
         
             <tr>
                 {console.log(this.props)} 
-                <td>{this.props.item.name}</td>    
-                <td>{this.props.item.quantity}</td>       
+                <td className={this.props.item.purchased === false ? '' : 'fade'}>{this.props.item.name}</td>    
+                <td className={this.props.item.purchased === false ? '' : 'fade'}>{this.props.item.quantity}</td>       
                 <td><button onClick={this.props.handleTogglePurchase}>{this.props.item.purchased === false ? 'Purchase' : 'Unpurchase'}</button></td> 
                 <td>EDIT BTN/LINK</td> 
                 <td><button onClick={this.handleDelete}>Delete</button></td> 

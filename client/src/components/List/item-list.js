@@ -23,10 +23,10 @@ class ItemList extends Component {
     }
     
     handleTogglePurchase(index) {
-        console.log(this.state.items[index].purchased)
-        this.setState((prevState) => {
-            this.state.items[index].purchased = !prevState.items[index].purchased;
-        })
+        const items = this.state.items.slice();
+        const item = items[index];
+        item.purchased = item.purchased ? false : true;
+        this.setState({ items: items });    
     }
     
     render() {
