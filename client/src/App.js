@@ -66,7 +66,7 @@ class App extends Component {
             />
             <Route path="/signup" component={Signup} />
             <Route path="/list" render={() =>
-                <ItemList />}
+                <ItemList loggedIn={this.state.loggedIn} />}
             />
           </div>
         );

@@ -21,7 +21,8 @@ class ItemList extends Component {
     
     render() {
         
-        return (
+        if (this.props.loggedIn) {       
+            return (
               <div>
                 <h1>Grocery items</h1>
                 <table>
@@ -42,6 +43,14 @@ class ItemList extends Component {
                 </table>
               </div>
             );
+        } else {
+            return (
+                <div>
+                    Please sign up/login to create a grocery list
+                </div>
+            );
+        }
+        
         
     }
     

@@ -17,14 +17,10 @@ class Nav extends Component {
  
         axios.post('/user/logout').then(response => {
           if (response.status === 200) {
-              
-              console.log(response);
-              
             this.props.updateUser({
               loggedIn: false,
               username: null
-            })
-              
+            })  
           }
         }).catch(err => {
             console.log(err)
@@ -32,19 +28,17 @@ class Nav extends Component {
       }
 	
     render() {
-        const loggedIn = this.props.loggedIn;
-        
         return (
             <div>
                 <header>
                     <div>
-                        {loggedIn ? (
+                        {this.props.loggedIn ? (
                             <section>
                                     <Link to="#" onClick={this.logout}>
                                     <span>LOGOUT</span>
                                 </Link>
                                 <Link to="/list">
-                                    <span>TODOS</span>
+                                    <span>GROCERY LIST</span>
                                 </Link>
                             </section>
                         ) : (
@@ -68,5 +62,6 @@ class Nav extends Component {
 
     }
 }
+
 
 export default Nav;
