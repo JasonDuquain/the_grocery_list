@@ -59,7 +59,7 @@ router.post('/update/:id', (req, res) => {
         return res.status(400).json({ error: "please enter the correct fields: name and quantity" });
     }
     
-    /******
+    /****** CONFIRMED IT IS NEEDED
     added {new:true} to make sure the updated item is returned 
     *******/
     Item.findByIdAndUpdate(req.params.id, { "$set": { 
