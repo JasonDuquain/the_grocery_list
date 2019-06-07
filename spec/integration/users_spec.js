@@ -28,8 +28,8 @@ describe('routes: /signup', () => {
                 url: `${expressBaseUrl}/user`,
                 form: {
                    username: 'jef',
-                   password: 'jef',
-                   confirmPassword: 'jef' 
+                   password: 'password123',
+                   confirmPassword: 'password123' 
                 }
                 
             }, (error, response) => {
@@ -56,13 +56,39 @@ describe('routes: /signup', () => {
                 url: `${expressBaseUrl}/user`,
                 form: {
                    username: 'jef',
-                   password: 'jef',
-                   confirmPassword: 'jef' 
+                   password: 'password123',
+                   confirmPassword: 'password123' 
                 }
             }, (error, response) => {
                 User.find().count()
                 .then(user => {
                     expect(user).toEqual(totalUsers);
+                    done(); 
+                })
+            });
+        }); 
+        
+        it('should NOT add a user with a password of less than 8 charactes', (done) => {
+            
+            let totalUsers = 0;
+            
+            User.find().count()
+            .then(users => {
+                totalUsers = users;
+            });
+            
+            request.post({
+                url: `${expressBaseUrl}/user`,
+                form: {
+                   username: 'martin',
+                   password: 'short',
+                   confirmPassword: 'short' 
+                }
+            }, (error, response) => {
+                User.find().count()
+                .then(user => {
+                    expect(user).toEqual(totalUsers);
+                    expect(response.body).toContain('shorter than the minimum allowed length');
                     done(); 
                 })
             });
@@ -82,7 +108,7 @@ describe('routes: /login', () => {
                 url: `${expressBaseUrl}/user/login`,
                 form: {
                    username: 'jef',
-                   password: 'jef' 
+                   password: 'password123' 
                 }
                 
             }, (error, response) => {
@@ -106,6 +132,7 @@ describe('routes: /login', () => {
                 done(); 
             });
         }); 
+        
         
     });
     

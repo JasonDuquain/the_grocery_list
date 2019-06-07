@@ -36,11 +36,14 @@ class Signup extends Component {
             return;
         }
         
-        /* REENABLE THIS WHEN ALL TESTING IS DONE!!!!
+        /* 
+        
+        REENABLE THIS WHEN ALMOST DONE - CHECK USER TESTS RIGHT AFTER!!!
         if (password.length < 7) {
             alert('password must be at least 8 characters in length');
             return;
         }
+        
         */
         
         axios.post('/user/', {
@@ -56,6 +59,7 @@ class Signup extends Component {
 				}
         })
         .catch(error => {
+            //WHILE THE password length check above is commented out thsi will now trigger!
             alert('there is already a user with this username');
             
             this.setState({

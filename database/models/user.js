@@ -4,18 +4,18 @@ const bcrypt = require('bcryptjs');
 mongoose.promise = Promise;
 
 
-// ADD VALIDATIONS!!!
 const userSchema = new Schema({
 
 	username: { 
-        type: String, 
-        unique: false, 
-        required: true 
+        type: String,  
+        required: true,
+        minlength: 1,
+        maxlength: 200
     },
 	password: { 
         type: String, 
-        unique: false, 
-        required: true 
+        minlength: 8,
+        maxlength: 200
     }
 
 });

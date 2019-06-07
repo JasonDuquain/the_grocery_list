@@ -11,21 +11,31 @@ describe('routes : items/', () => {
     
   beforeAll(done => {
     this.item;
-    new Item({
-      name: 'test tea',
-      quantity: 10,
-      purchased: false
-    })
-      .save()
-      .then(item => {
-        this.item = item;
-        
-        console.log('1');
-        
-        done();
-      })
-      .catch(err => console.log(err));
+      
+      Item.deleteMany({})
+        .then(() => {
+          new Item({
+          name: 'test tea',
+          quantity: 10,
+          purchased: false
+        })
+          .save()
+              .then(item => {
+                this.item = item;
+
+                console.log('1');
+
+                done();
+              })
+              .catch(err => console.log(err))
+                    done();
+                })
+                .catch((err) => {
+                    done();
+                });
+      
   }); 
+    
     
     describe('GET /items/', () => {
         
