@@ -5,10 +5,15 @@ const Schema = mongoose.Schema;
 
 let Item = new Schema({
     name: {
-        type: String
+        type: String,
+        required: true
     },
     quantity: {
-        type: Number
+        type: Number,
+        required: true
+    },
+    price: {
+        type: String
     },
     purchased: {
         type: Boolean

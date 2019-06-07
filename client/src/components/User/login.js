@@ -21,8 +21,13 @@ class Login extends Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault()
-
+        e.preventDefault();
+        
+        if (this.state.username === '' || this.state.password === '') {
+            alert('please enter data into all fields');
+            return;
+        }
+        
         axios.post('/user/login', {
                 username: this.state.username,
                 password: this.state.password
@@ -36,7 +41,12 @@ class Login extends Component {
                     this.setState( {redirectTo: '/'} )
                 }
             }).catch(error => {
-                console.log(error);
+                alert('login failed - try again');
+            
+                this.setState({
+                     username: '',
+                     password: ''
+                });
             })
     }
 

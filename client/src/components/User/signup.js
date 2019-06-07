@@ -26,6 +26,23 @@ class Signup extends Component {
         const password = this.state.password;
         const confirmPassword = this.state.confirmPassword;
         
+        if (username === '' || password === '' || confirmPassword === '') {
+            alert('please enter data into all fields');
+            return;
+        }
+        
+        if (password !== confirmPassword) {
+            alert('passwords dont match');
+            return;
+        }
+        
+        /* REENABLE THIS WHEN ALL TESTING IS DONE!!!!
+        if (password.length < 7) {
+            alert('password must be at least 8 characters in length');
+            return;
+        }
+        */
+        
         axios.post('/user/', {
 			username: username,
 			password: password
@@ -39,7 +56,13 @@ class Signup extends Component {
 				}
         })
         .catch(error => {
-            console.log(error);
+            alert('there is already a user with this username');
+            
+            this.setState({
+                 username: '',
+			     password: '',
+			     confirmPassword: ''
+            });
         })
     }
 	

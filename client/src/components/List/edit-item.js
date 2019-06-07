@@ -11,7 +11,9 @@ class EditItem extends Component {
         this.state = {
             name: '',
             quantity: 1,
-            purchased: false
+            price: '',
+            purchased: false,
+            date: ''
         }
         
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,7 +43,9 @@ class EditItem extends Component {
         const item = {
             name: this.state.name,
             quantity: this.state.quantity,
-            purchased: this.state.purchased
+            purchased: this.state.purchased,
+            price: this.state.price,
+            date: this.state.date,
         };
         
         axios.post('/items/update/' + this.props.match.params.id, item)
@@ -51,7 +55,9 @@ class EditItem extends Component {
         this.setState({
             name: '',
             quantity: 1,
-            purchased: false
+            price: '',
+            purchased: false,
+            date: ''
         });
         
         this.props.history.push('/list');
@@ -64,26 +70,38 @@ class EditItem extends Component {
                 <h2>Edit Item</h2>
                 <form>
                     <div>
-                        <label htmlFor="name">Name:</label>
-                        <input  
-                            type="text"
-                            name="name"
-                            id="name"
-                            value={this.state.name}
-                            onChange={this.handleChange}
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="quantity">Quantity:</label>
-                        <input  
-                            type="number"
-                            min="1"
-                            max="99999"
-                            name="quantity"
-                            id="quantity"
-                            value={this.state.quantity}
-                            onChange={this.handleChange}
-                        />
+                        <div>
+                            <label htmlFor="name">Name:</label>
+                            <input  
+                                type="text"
+                                name="name"
+                                id="name"
+                                value={this.state.name}
+                                onChange={this.handleChange}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="quantity">Quantity:</label>
+                            <input  
+                                type="number"
+                                min="1"
+                                max="99999"
+                                name="quantity"
+                                id="quantity"
+                                value={this.state.quantity}
+                                onChange={this.handleChange}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="price">Price:</label>
+                            <input  
+                                type="text"
+                                name="price"
+                                id="price"
+                                value={this.state.price}
+                                onChange={this.handleChange}
+                            />
+                        </div>
                     </div>
                     <div>
                         <button onClick={this.handleSubmit}>Submit Changes</button>

@@ -9,7 +9,9 @@ class CreateItem extends Component {
         this.state = {
             name: '',
             quantity: 1,
-            purchased: false
+            price: '',
+            purchased: false,
+            date: ''
         }
         
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,8 +28,15 @@ class CreateItem extends Component {
         const item = {
             name: this.state.name,
             quantity: this.state.quantity,
-            purchased: this.state.purchased
+            price: this.state.price,
+            purchased: this.state.purchased,
+            date: this.state.date
         };
+        
+        if (item.name === '' || item.quantity === '' || item.price === '') {
+            alert('please enter data into all fields');
+            return;
+        }
         
         axios.post('/items/add/', item)
             .then(response => console.log(response.data))
@@ -36,7 +45,9 @@ class CreateItem extends Component {
         this.setState({
             name: '',
             quantity: 1,
-            purchased: false
+            price: '',
+            purchased: false,
+            date: ''
         });
     }
     
@@ -46,26 +57,38 @@ class CreateItem extends Component {
                 <h2>Create New Item</h2>
                 <form>
                     <div>
-                        <label htmlFor="name">Name:</label>
-                        <input  
-                            type="text"
-                            name="name"
-                            id="name"
-                            value={this.state.name}
-                            onChange={this.handleChange}
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="quantity">Quantity:</label>
-                        <input  
-                            type="number"
-                            min="1"
-                            max="99999"
-                            name="quantity"
-                            id="quantity"
-                            value={this.state.quantity}
-                            onChange={this.handleChange}
-                        />
+                        <div>
+                            <label htmlFor="name">Name:</label>
+                            <input  
+                                type="text"
+                                name="name"
+                                id="name"
+                                value={this.state.name}
+                                onChange={this.handleChange}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="quantity">Quantity:</label>
+                            <input  
+                                type="number"
+                                min="1"
+                                max="99999"
+                                name="quantity"
+                                id="quantity"
+                                value={this.state.quantity}
+                                onChange={this.handleChange}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="price">Price:</label>
+                            <input  
+                                type="text"
+                                name="price"
+                                id="price"
+                                value={this.state.price}
+                                onChange={this.handleChange}
+                            />
+                        </div>
                     </div>
                     <div>
                         <button onClick={this.handleSubmit}>Add Item</button>

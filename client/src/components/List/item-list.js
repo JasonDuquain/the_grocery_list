@@ -40,6 +40,7 @@ class ItemList extends Component {
                         <tr>
                             <th>Name</th>
                             <th>Quantity</th>
+                            <th>Price</th>
                             <th>Purchased?</th>
                             <th>Edit</th>
                             <th>Delete</th>
