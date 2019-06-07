@@ -24,12 +24,7 @@ class Signup extends Component {
 		e.preventDefault();
         const username = this.state.username;
         const password = this.state.password;
-        const confirmPassord = this.state.confirmPassword;
-        
-        if (password !== confirmPassord) {
-            alert('passwords dont match');
-            return;
-        }
+        const confirmPassword = this.state.confirmPassword;
         
         axios.post('/user/', {
 			username: username,
@@ -40,10 +35,12 @@ class Signup extends Component {
 					alert('success - redirecting to login page')
 					this.setState( {redirectTo: '/login'} );
 				} else {
-					alert('username already exists');
+					alert('username already exists'); //will never trigger??
 				}
         })
-        .catch(error => console.log('sign up svr err'))
+        .catch(error => {
+            console.log(error);
+        })
     }
 	
     render() {

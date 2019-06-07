@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
 mongoose.promise = Promise;
 
+
 // ADD VALIDATIONS!!!
 const userSchema = new Schema({
 
@@ -34,12 +35,12 @@ userSchema.pre('save', function (next) {
 		console.log('no password provided');
 		next();
 	} else {
-		this.password = this.hashPassword(this.password)
+		this.password = this.hashPassword(this.password);
 		next();
 	}
 });
 
 
 
-const User = mongoose.model('User', userSchema)
+const User = mongoose.model('User', userSchema);
 module.exports = User;

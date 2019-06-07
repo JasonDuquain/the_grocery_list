@@ -18,7 +18,7 @@ passport.deserializeUser((id, done) => {
 });
 
 
-// Strategies - **add Google Auth  
+// Strategies - **add Google Auth if time permits  
 passport.use(localStrategy);
 
 

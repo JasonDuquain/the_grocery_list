@@ -6,26 +6,32 @@ const passport = require('../passport');
 
 router.post('/', (req, res) => {
     
-    User.findOne({ username: req.body.username }, (err, user) => {
-        if (err) {
-            console.log(err);
-        } else if (user) {
-            res.json({error: `already a user with the username: ${req.body.username}`})
-        }
-        else {
-            const newUser = new User({
-                username: req.body.username,
-                password: req.body.password
-            })
-            newUser.save()
-            .then(user => {
-                res.status(201).json({message: "User created"});
-            })
-            .catch(err => {
-                res.status(500).json({error: err});
-            })
-        }
-    });
+    User.findOne({ username: req.body.username })
+        .then(user => {
+            
+            if (user) {
+                console.log('already a user with this username')
+                res.status(400).json({ error: `already a user with the username: ${req.body.username}` })
+            } else {
+                
+                const newUser = new User({
+                    username: req.body.username,
+                    password: req.body.password
+                })
+                
+                newUser.save()
+                .then(user => {
+                    res.status(201).json({message: "User created"});
+                })
+                .catch(err => {
+                    res.status(500).json({error: err});
+                })
+            }
+            
+        })
+        .catch(err => {
+            res.status(500).json({ error: "fail on user save" })
+        })
     
 });
 
@@ -36,7 +42,7 @@ router.post('/login', function (req, res, next) {
         var user = {
             username: req.user.username
         };
-        console.log(user); // { username: 'pat' }
+        console.log(user); // example output: { username: 'pat' }
         res.send(user);
     }
 );
