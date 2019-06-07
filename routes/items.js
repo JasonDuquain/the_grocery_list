@@ -54,10 +54,19 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/update/:id', (req, res) => {
+    
+    if (!req.body.name && !req.body.quantity) {
+        return res.status(400).json({ error: "please enter the correct fields: name and quantity" });
+    }
+    
+    /******
+    added {new:true} to make sure the updated item is returned 
+    *******/
     Item.findByIdAndUpdate(req.params.id, { "$set": { 
         "name": req.body.name, 
-        "quantity": req.body.quantity 
-    }})
+        "quantity": req.body.quantity,
+        "purchased": false
+    }}, { new: true })
     .then(item => {
         res.status(200).json({ message: "item updated: " + item })
     })

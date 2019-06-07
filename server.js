@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const database = require('./database');
 const passport = require('./passport');
+const MongoStore = require('connect-mongo')(session)
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -19,13 +20,14 @@ const items = require('./routes/items');
 app.use(session({
 		secret: process.env.SECRET, 
 		resave: false, 
-		saveUninitialized: false
+		saveUninitialized: false,
+        store: new MongoStore({ mongooseConnection: database }),
 	})
 );
 
 //// Passport
 app.use(passport.initialize());
-app.use(passport.session()) ;
+app.use(passport.session());
 
 // Middleware
 app.use(bodyParser.urlencoded({extended: false}));
@@ -38,7 +40,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 //// Routes
 app.use('/user', users);
-app.use('/items', items)
+app.use('/items', items);
 
 
 //****TODO: add a conditional for public/build etc ??
