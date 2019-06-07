@@ -17,7 +17,7 @@ class CreateItem extends Component {
     }
     
     handleChange(e) {
-        this.setState({ [e.target.name]: e.target.value })
+        this.setState({ [e.target.name]: e.target.value });
     }
     
     handleSubmit(e) {
@@ -27,17 +27,17 @@ class CreateItem extends Component {
             name: this.state.name,
             quantity: this.state.quantity,
             purchased: this.state.purchased
-        }
+        };
         
         axios.post('/items/add/', item)
-            .then(res => console.log(res.data))
+            .then(response => console.log(response.data))
             .catch((err) => console.log(err))
         
         this.setState({
             name: '',
             quantity: 1,
             purchased: false
-        })
+        });
     }
     
     render() {

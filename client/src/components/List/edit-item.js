@@ -18,6 +18,7 @@ class EditItem extends Component {
 		this.handleChange = this.handleChange.bind(this);
     }
     
+    // ADDING THIS TO GET THE INPUT FIELDS TO POPULATE WITH THE VALUES
     componentDidMount() {
         axios.get('/items/' + this.props.match.params.id)
             .then(response => {
@@ -25,7 +26,7 @@ class EditItem extends Component {
                     name: response.data.name,
                     quantity: response.data.quantity,
                     purchased: response.data.purchased
-                })
+                });
             })
             .catch(err => console.log(err));
     }
@@ -41,15 +42,17 @@ class EditItem extends Component {
             name: this.state.name,
             quantity: this.state.quantity,
             purchased: this.state.purchased
-        }
+        };
         
-        
+        axios.post('/items/update/' + this.props.match.params.id, item)
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err));
         
         this.setState({
             name: '',
             quantity: 1,
             purchased: false
-        })
+        });
         
         this.props.history.push('/list');
     }

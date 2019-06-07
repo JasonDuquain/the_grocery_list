@@ -17,7 +17,7 @@ class ItemList extends Component {
         axios.get('/items/')
             .then(response => {
             console.log(response)
-                this.setState( {items: response.data} );
+                this.setState({ items: response.data });
             })
             .catch(err => console.log(err));
     }

@@ -10,8 +10,6 @@ Items are getting deleted but not sure how state is updated in the parent?? But 
 **************************/
 
 
-//// Add edit link and maybe a checkbox for the complted prop
-
 class ItemRow extends Component {
     
     constructor() {
