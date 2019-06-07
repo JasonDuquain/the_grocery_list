@@ -6,6 +6,8 @@ import Login from './components/User/login';
 import Nav from './components/nav';
 import Home from './components/home';
 import ItemList from './components/List/item-list';
+import EditItem from './components/List/edit-item';
+import CreateItem from './components/List/create-item';
 
 import './App.scss';
 import axios from 'axios';
@@ -23,20 +25,13 @@ class App extends Component {
       
     }
     
-    /* 
-    fix for logout on refresh - look at local/sessionStorage for an alternate fix:
-    
-    https://stackoverflow.com/questions/48845057/keep-user-logged-in-on-refresh-using-local-storage-with-react
-    
-    https://stackoverflow.com/questions/53830022/passportjs-get-details-of-logged-in-user-on-page-refresh-in-react-app/53831128
-    */
     componentDidMount() {
         axios.get('/user/').then(response => {
             if (response.data.user) {
-            this.setState({
-              loggedIn: true,
-              username: response.data.user.username
-            })
+                this.setState({
+                  loggedIn: true,
+                  username: response.data.user.username
+                })
             } else {
                 this.setState({
                   loggedIn: false,
@@ -65,9 +60,11 @@ class App extends Component {
                 <Login updateState={this.updateState} />}
             />
             <Route path="/signup" component={Signup} />
-            <Route path="/list" render={() =>
+            <Route exact path="/list" render={() =>
                 <ItemList loggedIn={this.state.loggedIn} />}
             />
+            <Route path="/edit/:id" component={EditItem} />
+            <Route path="/create" component={CreateItem} />
           </div>
         );
   }

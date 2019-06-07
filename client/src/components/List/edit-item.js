@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
+
 import axios from 'axios';
 
 
-class CreateItem extends Component {
+class EditItem extends Component {
+    
     constructor() {
         super();
         
@@ -14,6 +16,18 @@ class CreateItem extends Component {
         
         this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+    }
+    
+    componentDidMount() {
+        axios.get('/items/' + this.props.match.params.id)
+            .then(response => {
+                this.setState({
+                    name: response.data.name,
+                    quantity: response.data.quantity,
+                    purchased: response.data.purchased
+                })
+            })
+            .catch(err => console.log(err));
     }
     
     handleChange(e) {
@@ -29,21 +43,22 @@ class CreateItem extends Component {
             purchased: this.state.purchased
         }
         
-        axios.post('/items/add/', item)
-            .then(res => console.log(res.data))
-            .catch((err) => console.log(err))
+        
         
         this.setState({
             name: '',
             quantity: 1,
             purchased: false
         })
+        
+        this.props.history.push('/list');
     }
     
     render() {
+        
         return (
             <div>
-                <h2>Create New Item</h2>
+                <h2>Edit Item</h2>
                 <form>
                     <div>
                         <label htmlFor="name">Name:</label>
@@ -68,14 +83,13 @@ class CreateItem extends Component {
                         />
                     </div>
                     <div>
-                        <button onClick={this.handleSubmit}>Add Item</button>
+                        <button onClick={this.handleSubmit}>Submit Changes</button>
                     </div>
                 </form>
             </div>
-        );
+        );  
     }
+    
 }
 
-
-
-export default CreateItem;
+export default EditItem;

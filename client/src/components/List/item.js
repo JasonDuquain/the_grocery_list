@@ -33,7 +33,9 @@ class ItemRow extends Component {
                 <td className={this.props.item.purchased === false ? '' : 'fade'}>{this.props.item.name}</td>    
                 <td className={this.props.item.purchased === false ? '' : 'fade'}>{this.props.item.quantity}</td>       
                 <td><button onClick={this.props.handleTogglePurchase}>{this.props.item.purchased === false ? 'Purchase' : 'Unpurchase'}</button></td> 
-                <td>EDIT BTN/LINK</td> 
+                <td>
+                    <Link to={"/edit/" + this.props.item._id}>Edit</Link>
+                </td> 
                 <td><button onClick={this.handleDelete}>Delete</button></td> 
             </tr>
         

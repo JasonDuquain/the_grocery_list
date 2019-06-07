@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import '../App.scss';
 import axios from 'axios';
@@ -39,6 +39,9 @@ class Nav extends Component {
                                 </Link>
                                 <Link to="/list">
                                     <span>GROCERY LIST</span>
+                                </Link>
+                                <Link to="/">
+                                    <span>CREATE ITEM</span>
                                 </Link>
                             </section>
                         ) : (
