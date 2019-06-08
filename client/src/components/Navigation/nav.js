@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
-import '../App.scss';
+import '../../App.scss';
 import axios from 'axios';
 
 
@@ -34,27 +34,27 @@ class Nav extends Component {
                     <div>
                         {this.props.loggedIn ? (
                             <section>
-                                    <Link to="#" onClick={this.logout}>
+                                <NavLink to="#" onClick={this.logout} style={{display: "inline-block", padding: "2em"}}>
                                     <span>LOGOUT</span>
-                                </Link>
-                                <Link to="/list">
+                                </NavLink>
+                                <NavLink to="/list" activeClassName="is-active">
                                     <span>GROCERY LIST</span>
-                                </Link>
-                                <Link to="/">
+                                </NavLink>
+                                <NavLink to="/create" activeClassName="is-active">
                                     <span>CREATE ITEM</span>
-                                </Link>
+                                </NavLink>
                             </section>
                         ) : (
                             <section>
-                                <Link to="/">
+                                <NavLink to="/" activeClassName="is-active" exact={true}>
                                     <span>HOME</span>
-                                </Link>
-                                <Link to="/login">
+                                </NavLink>
+                                <NavLink to="/login" activeClassName="is-active">
                                     <span>LOGIN</span>
-                                </Link>
-                                <Link to="/signup">
+                                </NavLink>
+                                <NavLink to="/signup" activeClassName="is-active">
                                     <span>SIGNUP</span>
-                                </Link>
+                                </NavLink>
                             </section>
                             )}
                     </div>

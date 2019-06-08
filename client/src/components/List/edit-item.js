@@ -27,6 +27,7 @@ class EditItem extends Component {
                 this.setState({
                     name: response.data.name,
                     quantity: response.data.quantity,
+                    price: response.data.price,
                     purchased: response.data.purchased
                 });
             })

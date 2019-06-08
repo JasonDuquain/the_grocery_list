@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CreateItem from './List/create-item';
+import CreateItem from '../List/create-item';
 
 
 /***** If no state is needed change this to a function *****/
