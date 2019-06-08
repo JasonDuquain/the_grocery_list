@@ -19,7 +19,11 @@ class ItemRow extends Component {
     
     handleDelete(index) {
         axios.post('/items/delete/' + this.props.item._id)
-        .then(deletedItem => console.log(deletedItem))
+        .then(deletedItem => {
+            /* 2019608 temp fix to get items to remove from the UI w/o a manual refresh */
+            window.location.reload();
+            console.log(deletedItem)
+        })
         .catch(err => console.log(err))
     }
     

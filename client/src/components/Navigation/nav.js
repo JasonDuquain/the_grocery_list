@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 
 import '../../App.scss';
 import axios from 'axios';
@@ -7,7 +7,7 @@ import axios from 'axios';
 
 class Nav extends Component {
     constructor() {
-        super()
+        super();
 		
         this.logout = this.logout.bind(this);
     }
@@ -15,13 +15,16 @@ class Nav extends Component {
     logout(e) {
         e.preventDefault()
  
-        axios.post('/user/logout').then(response => {
-          if (response.status === 200) {
-            this.props.updateUser({
-              loggedIn: false,
-              username: null
-            })  
-          }
+        axios.post('/user/logout')
+            .then(response => {
+                if (response.status === 200) {
+                    this.props.updateUser({
+                        loggedIn: false,
+                        username: null
+                    });
+                    /** 20190608 needed to add withRouter to get this to work since Nav is outside of the routes **/
+                    this.props.history.push('/');
+                }
         }).catch(err => {
             console.log(err)
         })
@@ -67,4 +70,4 @@ class Nav extends Component {
 }
 
 
-export default Nav;
+export default withRouter(Nav);

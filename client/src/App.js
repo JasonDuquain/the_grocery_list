@@ -65,15 +65,10 @@ class App extends Component {
                 />
                 <Route exact path="/edit/:id" component={EditItem} />
                     
-                    {/*
-                    
-                    20190608 Leave in place to try and get username state to get passed down as a prop on every login.
-                    
-                    <Route path="/create" component={CreateItem} />*/}
-        
-                { 
                 <Route path="/create" render={() => 
-                     <CreateItem username={this.state.username} />}
+                     <CreateItem 
+                        username={this.state.username} 
+                        loggedIn={this.state.loggedIn}/>}
                 />}
                 <Route component={NotFound} />
             </Switch>

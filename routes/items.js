@@ -30,15 +30,7 @@ router.get('/', (req, res) => {
         })
         
         res.status(200).json(newItems);
-        
-       /************* 20190608
-       fix for getting only showing the items in the list for that specific user but cant get props to update the username on 2nd and subsequent loging :(. Leave this to continue troubleshooting
-       
-        
-        
-        ******************/
 
-        /////////////////////////res.status(200).json(item);
     })
     .catch(err => {
         res.status(400).json({ error: err });

@@ -51,51 +51,62 @@ class CreateItem extends Component {
     }
     
     render() {
-        return (
-            <div>
-                <h2>Create New Item</h2>
+        
+        if (this.props.loggedIn) {
+            return (
+                <div>
+                    <h2>Create New Item</h2>
+
+                    <form>
+                        <div>
+                            <div>
+                                <label htmlFor="name">Name:</label>
+                                <input  
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                    value={this.state.name}
+                                    onChange={this.handleChange}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="quantity">Quantity:</label>
+                                <input  
+                                    type="number"
+                                    min="1"
+                                    max="99999"
+                                    name="quantity"
+                                    id="quantity"
+                                    value={this.state.quantity}
+                                    onChange={this.handleChange}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="price">Price:</label>
+                                <input  
+                                    type="text"
+                                    name="price"
+                                    id="price"
+                                    value={this.state.price}
+                                    onChange={this.handleChange}
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <button onClick={this.handleSubmit}>Add Item</button>
+                        </div>
+                    </form>
+                </div>
+            );
             
-                <form>
-                    <div>
-                        <div>
-                            <label htmlFor="name">Name:</label>
-                            <input  
-                                type="text"
-                                name="name"
-                                id="name"
-                                value={this.state.name}
-                                onChange={this.handleChange}
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="quantity">Quantity:</label>
-                            <input  
-                                type="number"
-                                min="1"
-                                max="99999"
-                                name="quantity"
-                                id="quantity"
-                                value={this.state.quantity}
-                                onChange={this.handleChange}
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="price">Price:</label>
-                            <input  
-                                type="text"
-                                name="price"
-                                id="price"
-                                value={this.state.price}
-                                onChange={this.handleChange}
-                            />
-                        </div>
-                    </div>
-                    <div>
-                        <button onClick={this.handleSubmit}>Add Item</button>
-                    </div>
-                </form>
-            </div>
-        );
+        } else {
+            return (
+                <div>
+                    Please sign up/login to create items for your grocery list
+                </div>
+            );
+        }
+        
     }
 }
 
