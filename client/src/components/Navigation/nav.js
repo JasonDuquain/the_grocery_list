@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, NavLink, withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 
 import '../../App.scss';
 import axios from 'axios';
@@ -22,7 +22,7 @@ class Nav extends Component {
                         loggedIn: false,
                         username: null
                     });
-                    /** 20190608 needed to add withRouter to get this to work since Nav is outside of the routes **/
+                    /** 20190608 needed to add withRouter to get this to work since Nav component is outside of the routes **/
                     this.props.history.push('/');
                 }
         }).catch(err => {
@@ -37,6 +37,9 @@ class Nav extends Component {
                     <div>
                         {this.props.loggedIn ? (
                             <section>
+                                <NavLink to="/" activeClassName="is-active" exact={true}>
+                                    <span>HOME</span>
+                                </NavLink>
                                 <NavLink to="#" onClick={this.logout} style={{display: "inline-block", padding: "2em"}}>
                                     <span>LOGOUT</span>
                                 </NavLink>

@@ -16,7 +16,7 @@ class CreateItem extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
     }
-    
+
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
@@ -29,7 +29,7 @@ class CreateItem extends Component {
             quantity: this.state.quantity,
             price: this.state.price,
             purchased: this.state.purchased,
-            username: this.props.username // props not state!!
+            username: this.props.username // PROPS not state!!
 
         };
         
@@ -48,6 +48,7 @@ class CreateItem extends Component {
             price: '',
             purchased: false
         });
+        
     }
     
     render() {
@@ -61,7 +62,7 @@ class CreateItem extends Component {
                         <div>
                             <div>
                                 <label htmlFor="name">Name:</label>
-                                <input  
+                                <input autoFocus
                                     type="text"
                                     name="name"
                                     id="name"

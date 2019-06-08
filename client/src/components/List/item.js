@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
-/******************************
+/**************
 
 Items are getting deleted but not sure how state is updated in the parent?? But it appears to. Might need to move the handleDelete fn to ItemRow if any issues
 
-**************************/
+***************/
 
 
 class ItemRow extends Component {
@@ -20,9 +20,8 @@ class ItemRow extends Component {
     handleDelete(index) {
         axios.post('/items/delete/' + this.props.item._id)
         .then(deletedItem => {
-            /* 2019608 temp fix to get items to remove from the UI w/o a manual refresh */
+            /* 2019608 temp fix to get items to be visually removed from the UI w/o a manual refresh */
             window.location.reload();
-            console.log(deletedItem)
         })
         .catch(err => console.log(err))
     }
@@ -30,8 +29,7 @@ class ItemRow extends Component {
     render() {
         return (
         
-            <tr>
-                {console.log(this.props)} 
+            <tr> 
                 <td className={this.props.item.purchased === false ? '' : 'fade'}>{this.props.item.name}</td>    
                 <td className={this.props.item.purchased === false ? '' : 'fade'}>{this.props.item.quantity}</td>       
                 <td className={this.props.item.purchased === false ? '' : 'fade'}>{this.props.item.price}</td>       

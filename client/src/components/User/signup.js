@@ -52,7 +52,9 @@ class Signup extends Component {
 		})
         .then(response => {
 				if (!response.data.error) {
-					alert('success - redirecting to login page')
+					
+                    /* add some kind of non-intrusive confirmation here */
+                    
 					this.setState( {redirectTo: '/login'} );
 				} else {
 					alert('username already exists'); //will never trigger??
@@ -84,6 +86,7 @@ class Signup extends Component {
                                 type="text"
                                 name="username"
                                 id="username"
+                                placeholder="create your username"
                                 value={this.state.username}
                                 onChange={this.handleChange}
                             />
@@ -92,14 +95,17 @@ class Signup extends Component {
                                 type="password"
                                 name="password"
                                 id="password"
+                                placeholder="create your password"
                                 value={this.state.password}
                                 onChange={this.handleChange}
                             />
+                            <small>Password must be at least 8 characters</small>
                             <label htmlFor="confirmPassword">Confirm password:</label>
                             <input
                                 type="password"
                                 name="confirmPassword"
                                 id="confirmPassword"
+                                placeholder="same as password field"
                                 value={this.state.confirmPassword}
                                 onChange={this.handleChange}
                             />

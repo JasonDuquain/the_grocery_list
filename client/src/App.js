@@ -50,7 +50,7 @@ class App extends Component {
           <div className="App">
             <Nav updateUser={this.updateState} loggedIn={this.state.loggedIn} />
             {this.state.loggedIn &&
-              <p>Hello {this.state.username}!</p>
+              <p>Hello {this.state.username}</p>
             }
             <Switch>
                 <Route exact path="/" render={() =>

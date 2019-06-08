@@ -47,18 +47,23 @@ class EditItem extends Component {
             price: this.state.price
         };
         
+        if (item.name === '' || item.quantity === '' || item.price === '') {
+            alert('please enter values into each field');
+            return;
+        }
+        
         axios.post('/items/update/' + this.props.match.params.id, item)
-            .then(res => console.log(res.data))
+            .then(res => {
+                this.setState({
+                    name: '',
+                    quantity: 1,
+                    price: '',
+                    purchased: false
+                });
+
+                this.props.history.push('/list');
+            })
             .catch(err => console.log(err));
-        
-        this.setState({
-            name: '',
-            quantity: 1,
-            price: '',
-            purchased: false
-        });
-        
-        this.props.history.push('/list');
     }
     
     render() {

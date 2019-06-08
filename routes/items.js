@@ -4,12 +4,12 @@ const Item = require('../database/models/item');
 
 
 router.post('/add', (req, res) => {
-    
     if (!req.body.name && !req.body.quantity) {
         return res.status(400).json({ error: "please enter the correct fields: name and quantity" });
     }
 
     let item = new Item(req.body);
+    
     item.save()
     .then(item => {
             res.status(201).json({ message: "item added " + item });
@@ -21,16 +21,12 @@ router.post('/add', (req, res) => {
 
 router.get('/', (req, res) => {
     
-
     Item.find()
     .then(item => {
-        
         let newItems = item.filter((el, idx) => {
             return el.username === req.user.username
         })
-        
         res.status(200).json(newItems);
-
     })
     .catch(err => {
         res.status(400).json({ error: err });
@@ -38,6 +34,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/delete/:id', (req, res) => {
+    
     Item.findByIdAndRemove({ _id: req.params.id })
     .then(item => {
             res.status(200).json({ message: "item removed " + item });
@@ -49,6 +46,7 @@ router.post('/delete/:id', (req, res) => {
 
 router.get('/:id', (req, res) => {
     const id = req.params.id;
+    
     Item.findById(id)
     .then(item => {
         res.status(200).json(item);
@@ -64,9 +62,7 @@ router.post('/update/:id', (req, res) => {
         return res.status(400).json({ error: "please enter the correct fields: name and quantity" });
     }
     
-    /****** CONFIRMED THAT IT IS NEEDED:
-    added {new:true} to make sure the updated item is returned 
-    *******/
+    /** added {new:true} to make sure the updated item is returned **/
     Item.findByIdAndUpdate(req.params.id, { "$set": { 
         "name": req.body.name, 
         "quantity": req.body.quantity,

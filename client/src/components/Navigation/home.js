@@ -1,36 +1,29 @@
-import React, { Component } from 'react';
-import CreateItem from '../List/create-item';
+import React from 'react';
 
 
-/***** If no state is needed change this to a function *****/
+const Home = (props) => {
 
-class Home extends Component {
-    constructor() {
-        super();
+    return (
+    
+        <div>
         
-    }
-
-    render() {
-
-        if (this.props.loggedIn) {
-            return (
-              <div>
-                {/* 20190608 - DONT USE THIS AS IT DOES NOT HIT THE ROUTE AND THE ROUTE IS WHERE THE PROP IS SENT  
-                <CreateItem />
-                */}
-                
-              </div>
-            );
-        } else {
-            return (
-              <div>
-                Please sign up/login to get started
-              </div>
-            );
-        }
-        
-    }
+            {props.loggedIn ? (
+                 <div>
+                    Please click create item get started or view your lists
+                 </div>
+                ) : (
+                 <div>
+                    Please sign up to get started 
+                 </div>
+             )}
+   
+        </div>
+    
+    );
+    
 }
 
 
+
 export default Home;
+
