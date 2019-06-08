@@ -10,8 +10,7 @@ class CreateItem extends Component {
             name: '',
             quantity: 1,
             price: '',
-            purchased: false,
-            date: ''
+            purchased: false
         }
         
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,7 +29,9 @@ class CreateItem extends Component {
             quantity: this.state.quantity,
             price: this.state.price,
             purchased: this.state.purchased,
-            date: this.state.date
+            
+            ///!!!!adding the username prop sent down from app
+            username: this.props.username
         };
         
         if (item.name === '' || item.quantity === '' || item.price === '') {
@@ -46,8 +47,7 @@ class CreateItem extends Component {
             name: '',
             quantity: 1,
             price: '',
-            purchased: false,
-            date: ''
+            purchased: false
         });
     }
     

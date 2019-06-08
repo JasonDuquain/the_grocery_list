@@ -17,9 +17,11 @@ let Item = new Schema({
     },
     purchased: {
         type: Boolean
+    },
+    username: {
+      type: String
     }
 });
-
 
 
 module.exports = mongoose.model('Item', Item);

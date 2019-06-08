@@ -22,10 +22,27 @@ router.post('/add', (req, res) => {
 router.get('/', (req, res) => {
     Item.find()
     .then(item => {
+        
+        
+        
+        let newItems = item.filter((el, idx) => {
+            return el.username === req.user.username
+        })
+        
+        
+        console.log('---------')
+        console.log(item[4].username);
+        console.log(req.user.username);
+        console.log(newItems)
+        
+        console.log('---------')
         //if no items are in the DB it will return an empty array *** may need to account for this ****
         
-        // this has to be just an item obj or it wont parse correctly inside items-list.js
-        res.status(200).json(item);
+        //!!! change this back to items if cant get this working :(
+        res.status(200).json(newItems);
+        
+        
+        
     })
     .catch(err => {
         res.status(400).json({ error: err });

@@ -66,7 +66,12 @@ class App extends Component {
                     <ItemList loggedIn={this.state.loggedIn} />}
                 />
                 <Route exact path="/edit/:id" component={EditItem} />
-                <Route path="/create" component={CreateItem} />
+                    
+                    {/*<Route path="/create" component={CreateItem} />*/}
+        
+                <Route path="/create" render={() => 
+                     <CreateItem username={this.state.username} />}
+                />
                 <Route component={NotFound} />
             </Switch>
           </div>
