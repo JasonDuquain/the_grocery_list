@@ -23,7 +23,6 @@ class App extends Component {
         }
     
         this.updateState = this.updateState.bind(this);
-      
     }
     
     componentDidMount() {
@@ -46,7 +45,6 @@ class App extends Component {
         this.setState(userObject);
     }
     
-    
     render() {
         return (
           <div className="App">
@@ -67,11 +65,12 @@ class App extends Component {
                 />
                 <Route exact path="/edit/:id" component={EditItem} />
                     
-                    {/*<Route path="/create" component={CreateItem} />*/}
+                <Route path="/create" component={CreateItem} />
         
+                {/* 20190608 Leave in place to try and get username state to get passed down as a prop on every login.
                 <Route path="/create" render={() => 
                      <CreateItem username={this.state.username} />}
-                />
+                />*/}
                 <Route component={NotFound} />
             </Switch>
           </div>

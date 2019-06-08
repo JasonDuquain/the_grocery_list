@@ -28,10 +28,14 @@ class CreateItem extends Component {
             name: this.state.name,
             quantity: this.state.quantity,
             price: this.state.price,
-            purchased: this.state.purchased,
+            purchased: this.state.purchased
             
-            ///!!!!adding the username prop sent down from app
+            /****** 20190608 adding the username prop sent down from app as state
+            Cant get it working since prop does not update on second login..but leave in place to follow up 
+            
             username: this.props.username
+            
+            *****************/
         };
         
         if (item.name === '' || item.quantity === '' || item.price === '') {

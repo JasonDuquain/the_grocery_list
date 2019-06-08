@@ -20,29 +20,23 @@ router.post('/add', (req, res) => {
 });
 
 router.get('/', (req, res) => {
+    
+
     Item.find()
     .then(item => {
         
-        
-        
+       /************* 20190608
+       fix for getting only showing the items in the list for that specific user but cant get props to update the username on 2nd and subsequent loging :(. Leave this to continue troubleshooting
+       
         let newItems = item.filter((el, idx) => {
             return el.username === req.user.username
         })
         
-        
-        console.log('---------')
-        console.log(item[4].username);
-        console.log(req.user.username);
-        console.log(newItems)
-        
-        console.log('---------')
-        //if no items are in the DB it will return an empty array *** may need to account for this ****
-        
-        //!!! change this back to items if cant get this working :(
         res.status(200).json(newItems);
         
-        
-        
+        ******************/
+
+        res.status(200).json(item);
     })
     .catch(err => {
         res.status(400).json({ error: err });

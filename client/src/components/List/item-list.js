@@ -9,7 +9,7 @@ class ItemList extends Component {
         super(props);
         this.state = { items: [] }
         
-        /* Dont think this is needed since the fn is passed inside an anonymous fn */
+        /* 20190606 Dont think this is needed since the fn is passed inside an anonymous fn but keep just in case any issues */
         //this.handleTogglePurchase = this.handleTogglePurchase.bind(this);
     }
     
@@ -61,8 +61,7 @@ class ItemList extends Component {
                 </div>
             );
         }
-        
-        
+          
     }
     
 }
