@@ -12,15 +12,14 @@ class EditItem extends Component {
             name: '',
             quantity: 1,
             price: '',
-            purchased: false,
-            date: ''
+            purchased: false
         }
         
         this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
     }
     
-    // ADDING THIS TO GET THE INPUT FIELDS TO POPULATE WITH THE VALUES
+    // need this to get the input fields to populate with the values
     componentDidMount() {
         axios.get('/items/' + this.props.match.params.id)
             .then(response => {
@@ -45,8 +44,7 @@ class EditItem extends Component {
             name: this.state.name,
             quantity: this.state.quantity,
             purchased: this.state.purchased,
-            price: this.state.price,
-            date: this.state.date,
+            price: this.state.price
         };
         
         axios.post('/items/update/' + this.props.match.params.id, item)
@@ -57,8 +55,7 @@ class EditItem extends Component {
             name: '',
             quantity: 1,
             price: '',
-            purchased: false,
-            date: ''
+            purchased: false
         });
         
         this.props.history.push('/list');

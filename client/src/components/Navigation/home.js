@@ -15,7 +15,10 @@ class Home extends Component {
         if (this.props.loggedIn) {
             return (
               <div>
+                {/* 20190608 - DONT USE THIS AS IT DOES NOT HIT THE ROUTE AND THE ROUTE IS WHERE THE PROP IS SENT  
                 <CreateItem />
+                */}
+                
               </div>
             );
         } else {

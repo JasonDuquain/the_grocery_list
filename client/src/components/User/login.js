@@ -38,7 +38,8 @@ class Login extends Component {
                         loggedIn: true,
                         username: response.data.username
                     })
-                    this.setState( {redirectTo: '/'} )
+                    /** 20190608 - changed redirectTo path from '/' to '/create'.../ was taking to home page which was sending directly to the <CreateTodo> component and was NOT USING ROUTING so it was not getting the username prop || Also look into changing this programatically (this.props.push('/create)) **/
+                    this.setState( {redirectTo: '/create'} )
                 }
             }).catch(error => {
                 alert('login failed - try again');
