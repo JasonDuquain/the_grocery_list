@@ -1,0 +1,35 @@
+
+.tablelist {
+    padding: 2em 1.5em;
+   
+    &__table {
+        padding: 4em 2em;
+        background-color: rgba(131, 126, 126, .8);
+        border-radius: 5px;
+        width: 90%;
+        margin: 0 auto;
+    }
+     
+    &__tablerow th {
+        text-transform: uppercase;
+        padding: .5em;
+    }
+    
+    &__tablerow td {
+       padding: .5em;
+        text-align: center;
+    }
+    
+    &__button {
+        margin-top: .5em;
+        text-align: center;
+        font-family: 'Lato', sans-serif;
+    }
+    
+}
+
+a.edit-button {
+    padding-left: .4em;
+    padding-right: .4em;
+}
+

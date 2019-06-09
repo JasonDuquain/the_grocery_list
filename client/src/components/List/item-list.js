@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import ItemRow from './item';
-
 import axios from 'axios';
+
+import './item-list.scss';
 
 
 class ItemList extends Component {
@@ -32,11 +33,11 @@ class ItemList extends Component {
         
         if (this.props.loggedIn) {       
             return (
-              <div>
-                <h1>Grocery items</h1>
-                <table>
-                    <thead>
-                        <tr>
+              <div className="tablelist">
+                <h2 className="tablelist__heading form-heading">Grocery items</h2>
+                <table className="tablelist__table">
+                    <thead className="tablelist__thead">
+                        <tr className="tablelist__tablerow">
                             <th>Name</th>
                             <th>Quantity</th>
                             <th>Price</th>
@@ -45,7 +46,7 @@ class ItemList extends Component {
                             <th>Delete</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="tablelist__tbody">
                         {
                             this.state.items.map((item, idx) => <ItemRow item={item} key={idx} handleTogglePurchase={() => this.handleTogglePurchase(idx)} />)
                         }
@@ -55,7 +56,7 @@ class ItemList extends Component {
             );
         } else {
             return (
-                <div>
+                <div style={{textAlign: "center", padding: "2em"}}>
                     Please sign up/login to create a grocery list
                 </div>
             );

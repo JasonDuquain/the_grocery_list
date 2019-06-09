@@ -40,6 +40,12 @@ form {
     margin: 1em 0;
 }
 
+.form-heading {
+    font-size: 2em;
+    margin: 2em;
+    text-align: center;
+}
+
 label {
     justify-self: end;
     padding: .5em;
@@ -58,17 +64,17 @@ small {
     justify-self: end;
 }
 
-button {
+button, .edit-button {
     display: block;
     margin: 3em auto 1em auto;
     padding: .8em 1.2em;
-    background-color: $aqua;
+    background-image: linear-gradient(to right, darken($aqua, 10%), $aqua);
     border: none;
     border-radius: 100em;
-    font-size: 1.2em;
+    font-size: 1em;
     color: #fff;
     cursor: pointer;
-    transition: all 250ms ease-in;
+    transition: all 150ms ease-in;
     box-shadow: 3px 3px 4px rgba(0,0,0,.2);
     text-transform: uppercase;
     
@@ -81,7 +87,6 @@ button {
         transform: translateY(1px);
     }
 }
-
 
 span {
     color: #fff;

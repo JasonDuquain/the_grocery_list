@@ -1,7 +1,7 @@
 $aqua: #1f9dca;
 
 .header {
-    background-image: linear-gradient(to right, darken($aqua, 15%), lighten($aqua, 15%));
+    background-image: linear-gradient(to right, darken($aqua, 10%), $aqua);
     padding: 2em 1.5em;
     border-radius: 0 0 8px 8px;
 

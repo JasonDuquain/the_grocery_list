@@ -72,7 +72,7 @@ class Signup extends Component {
         } else {
             return (
                 <div className="signup">
-                    <h2 className="signup__heading">Signup to create your shopping list</h2>
+                    <h2 className="signup__heading form-heading">Signup to create your shopping list</h2>
                     <form className="signup__form">
                         <div className="signup__form-container">
                             <p className="signup__group form-group">

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
+import './login.scss';
 
 class Login extends Component {
     constructor() {
@@ -56,43 +57,39 @@ class Login extends Component {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             return (
-                <div>
-                    <h1>Login Form</h1>
-                    <form>
-                        <div>
-                            <div>
-                                <label htmlFor="username">Username</label>
-                            </div>
-                            <div>
+                <div className="login">
+                    <h2 className="login__heading form-heading">Login Form</h2>
+                    <form className="login__form">
+                        <div className="login__form-container">
+                           <p className="login__group form-group">
+                            <label className="login__label" htmlFor="username">Username</label>
+                            <input autoFocus
+                                className="login__input"
+                                type="text"
+                                id="username"
+                                name="username"
+                                placeholder="enter username"
+                                value={this.state.username}
+                                onChange={this.handleChange}
+                            />
+                           </p>
+                            <p className="login__group form-group">
+                                <label className="login__label" htmlFor="password">Password: </label>
                                 <input
-                                    type="text"
-                                    id="username"
-                                    name="username"
-                                    placeholder="enter username"
-                                    value={this.state.username}
-                                    onChange={this.handleChange}
-                                />
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <label htmlFor="password">Password: </label>
-                            </div>
-                            <div>
-                                <input
+                                    className="login__input"
                                     placeholder="enter password"
                                     type="password"
                                     name="password"
                                     value={this.state.password}
                                     onChange={this.handleChange}
                                 />
+                            </p>
+                            <div className="login__button-container button-container">
+                                <button className="login__button"    
+                                    onClick={this.handleSubmit}
+                                    type="submit">Login
+                                </button>
                             </div>
-                        </div>
-                        <div>
-                            <button    
-                                onClick={this.handleSubmit}
-                                type="submit">Login
-                            </button>
                         </div>
                     </form>
                 </div>

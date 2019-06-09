@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+import './create-item.scss';
+
 
 class CreateItem extends Component {
     constructor() {
@@ -55,24 +57,25 @@ class CreateItem extends Component {
         
         if (this.props.loggedIn) {
             return (
-                <div>
-                    <h2>Create New Item</h2>
-
-                    <form>
-                        <div>
-                            <div>
-                                <label htmlFor="name">Name:</label>
+                <div className="create">
+                    <h2 className="create__heading form-heading">Create New Item</h2>
+                    <form className="create__form">
+                        <div className="create__form-container">
+                            <p className="create__group form-group">
+                                <label className="create__label" htmlFor="name">Name:</label>
                                 <input autoFocus
+                                    className="create__input"
                                     type="text"
                                     name="name"
                                     id="name"
                                     value={this.state.name}
                                     onChange={this.handleChange}
                                 />
-                            </div>
-                            <div>
-                                <label htmlFor="quantity">Quantity:</label>
-                                <input  
+                            </p>
+                            <p className="create__group form-group">
+                                <label className="create__label" htmlFor="quantity">Quantity:</label>
+                                <input
+                                    className="create__input"
                                     type="number"
                                     min="1"
                                     max="99999"
@@ -81,20 +84,21 @@ class CreateItem extends Component {
                                     value={this.state.quantity}
                                     onChange={this.handleChange}
                                 />
-                            </div>
-                            <div>
+                            </p>
+                            <p className="create__group form-group">
                                 <label htmlFor="price">Price:</label>
-                                <input  
+                                <input 
+                                    className="create__input"
                                     type="text"
                                     name="price"
                                     id="price"
                                     value={this.state.price}
                                     onChange={this.handleChange}
                                 />
-                            </div>
+                            </p>
                         </div>
-                        <div>
-                            <button onClick={this.handleSubmit}>Add Item</button>
+                        <div className="create__button-container button-container">
+                            <button className="login__button" onClick={this.handleSubmit}>Add Item</button>
                         </div>
                     </form>
                 </div>
@@ -102,7 +106,7 @@ class CreateItem extends Component {
             
         } else {
             return (
-                <div>
+                <div style={{textAlign: "center", padding: "2em"}}>
                     Please sign up/login to create items for your grocery list
                 </div>
             );

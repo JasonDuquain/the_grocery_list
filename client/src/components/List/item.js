@@ -29,15 +29,15 @@ class ItemRow extends Component {
     render() {
         return (
         
-            <tr> 
+            <tr className="tablelist__tablerow"> 
                 <td className={this.props.item.purchased === false ? '' : 'fade'}>{this.props.item.name}</td>    
                 <td className={this.props.item.purchased === false ? '' : 'fade'}>{this.props.item.quantity}</td>       
                 <td className={this.props.item.purchased === false ? '' : 'fade'}>{this.props.item.price}</td>       
-                <td><button onClick={this.props.handleTogglePurchase}>{this.props.item.purchased === false ? 'Purchase' : 'Unpurchase'}</button></td> 
+                <td><button className="tablelist__button" onClick={this.props.handleTogglePurchase}>{this.props.item.purchased === false ? 'Purchased' : 'Unpurchase'}</button></td> 
                 <td>
-                    <Link to={"/edit/" + this.props.item._id}>Edit</Link>
+                    <Link className="edit-button tablelist__button" to={"/edit/" + this.props.item._id}>Edit</Link>
                 </td> 
-                <td><button onClick={this.handleDelete}>Delete</button></td> 
+                <td><button className="tablelist__button" onClick={this.handleDelete}>Delete</button></td> 
             </tr>
         
         );

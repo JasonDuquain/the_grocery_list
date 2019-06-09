@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-
 import axios from 'axios';
+
+import './edit-item.scss';
 
 
 class EditItem extends Component {
@@ -69,23 +70,25 @@ class EditItem extends Component {
     render() {
         
         return (
-            <div>
-                <h2>Edit Item</h2>
-                <form>
-                    <div>
-                        <div>
-                            <label htmlFor="name">Name:</label>
-                            <input  
+            <div className="edit">
+                <h2 className="edit__heading form-heading">Edit Item</h2>
+                <form className="edit__form">
+                    <div className="edit__form-container">
+                       <p className="edit__group form-group"> 
+                            <label className="edit__label" htmlFor="name">Name:</label>
+                            <input autoFocus 
+                                className="edit__input"
                                 type="text"
                                 name="name"
                                 id="name"
                                 value={this.state.name}
                                 onChange={this.handleChange}
                             />
-                        </div>
-                        <div>
-                            <label htmlFor="quantity">Quantity:</label>
+                        </p>
+                        <p className="edit__group form-group"> 
+                            <label className="edit__label" htmlFor="quantity">Quantity:</label>
                             <input  
+                                className="edit__input"
                                 type="number"
                                 min="1"
                                 max="99999"
@@ -94,20 +97,21 @@ class EditItem extends Component {
                                 value={this.state.quantity}
                                 onChange={this.handleChange}
                             />
-                        </div>
-                        <div>
-                            <label htmlFor="price">Price:</label>
-                            <input  
+                        </p>
+                        <p className="edit__group form-group"> 
+                            <label className="edit__label" htmlFor="price">Price:</label>
+                            <input 
+                                className="edit__input"
                                 type="text"
                                 name="price"
                                 id="price"
                                 value={this.state.price}
                                 onChange={this.handleChange}
                             />
-                        </div>
+                        </p>
                     </div>
-                    <div>
-                        <button onClick={this.handleSubmit}>Submit Changes</button>
+                    <div className="edit__button-container button-container">
+                        <button className="edit__button"  onClick={this.handleSubmit}>Submit</button>
                     </div>
                 </form>
             </div>
