@@ -3,20 +3,6 @@ const router = express.Router()
 const User = require('../database/models/user');
 const passport = require('../passport');
 
-/*** FOR TESTING POPULATE ONLY  ***/
-/*
-
-router.post('/hay', (req, res) => {
-    User.findOne({ username: req.body.username })
-    .populate('items').exec((err, items) => {
-      console.log("Populated User " + items);
-    })
-});
-
-*/
-
-
-
 
 router.post('/', (req, res) => {
     
@@ -57,7 +43,9 @@ router.post('/login', function (req, res, next) {
             username: req.user.username
         };
         console.log(user); // example output: { username: 'pat' }
-        res.send(user);
+    
+        // this is to allow API testing - remove after presentation
+        res.send(req.user);
     }
 );
 

@@ -67,7 +67,6 @@ class Nav extends Component {
                                         Home
                                     </NavLink>
                                 </li>
-                                <li className="header__item header__item-title">The Grocery List</li>
                                 <li className="header__item">
                                     <NavLink className="header__link" to="/login" activeClassName="is-active">
                                         Login

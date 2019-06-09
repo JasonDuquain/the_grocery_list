@@ -1,3 +1,8 @@
+//// GLOBAL STYLES
+
+$aqua: #1f9dca;
+
+
 *, *:before, *:after {
     box-sizing: inherit;
     text-decoration: none;
@@ -12,31 +17,79 @@
 }
 
 body {
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Merriweather', serif;
     color: #fff;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.5)), url('/images/store.jpg');
+    background-image: linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,.6)), url('/images/store.jpg');
     background-size: cover;
     height: 100vh;
     width: 100vw;
 }
 
-.fade {
-    opacity: .3;
+form {
+    padding: 4em 2em;
+    background-color: rgba(131, 126, 126, .8);
+    border-radius: 5px;
+    width: 50%;
+    margin: 0 auto;
 }
 
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "PT Serif", serif;
+.form-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+    margin: 1em 0;
 }
 
-
+label {
+    justify-self: end;
+    padding: .5em;
+    font-size: 1.2em;
+}
 
 input {
-    font-family: inherit;
+    font-family: 'Lato', sans-serif;
+    width: 80%;
+    padding: .5em;
 }
+
+small {
+    font-family: 'Lato', sans-serif;
+    align-self: start;
+    justify-self: end;
+}
+
+button {
+    display: block;
+    margin: 3em auto 1em auto;
+    padding: .8em 1.2em;
+    background-color: $aqua;
+    border: none;
+    border-radius: 100em;
+    font-size: 1.2em;
+    color: #fff;
+    cursor: pointer;
+    transition: all 250ms ease-in;
+    box-shadow: 3px 3px 4px rgba(0,0,0,.2);
+    text-transform: uppercase;
+    
+    &:hover, &:focus {
+        background-color: darken($aqua, 10%);
+    }
+    
+    &:active {
+        box-shadow: 1px 1px 2px rgba(0,0,0,.2);
+        transform: translateY(1px);
+    }
+}
+
 
 span {
     color: #fff;
+}
+
+
+.fade {
+    opacity: .3;
 }
 
 

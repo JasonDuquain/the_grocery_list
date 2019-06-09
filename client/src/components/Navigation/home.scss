@@ -1,0 +1,36 @@
+$aqua: #1f9dca;
+
+
+
+.main {
+    padding: 5em 1.5em;
+    
+    &__section {
+        width: 70%;
+        margin: 0 auto;
+        text-align: center;
+    } 
+    
+    &__heading {
+        color: lighten($aqua, 20%);
+        font-size: 3.5em;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: .5em;
+        font-family: 'Lato', sans-serif;
+    }
+    
+    &__subheading {
+        font-size: 2em;
+        margin-bottom: 3em;
+        font-family: 'Lato', sans-serif;
+    }
+    
+    &__notice {
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+    
+    
+}

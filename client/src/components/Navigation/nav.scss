@@ -3,11 +3,8 @@ $aqua: #1f9dca;
 .header {
     background-image: linear-gradient(to right, darken($aqua, 15%), lighten($aqua, 15%));
     padding: 2em 1.5em;
-    
-    &__nav {
-       
-    }
-    
+    border-radius: 0 0 8px 8px;
+
     &__list {
         display: flex;
         align-items: center;
@@ -26,14 +23,15 @@ $aqua: #1f9dca;
         color: #fff;
         transition: all 300ms ease-out;
         text-transform: uppercase;
+        margin: 0 .5em;
         
         &.is-active {
             font-weight: bold; 
-            color: #000;
+            color: #F4F85F;
         }
         
         &:not(.is-active):hover, &:not(.is-active):focus {
-            color: #000;
+            color: #F4F85F;
         }
         
     }
