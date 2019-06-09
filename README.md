@@ -10,15 +10,19 @@ https://jasonduquain-grocerylist.herokuapp.com/
 
 2. Put the ".env" file at root. This file has config variables for mLab connection string and express-session secret.
 
-3. Install all dependencies:
+3. Install all node dependencies:
 
-```npm intall``` 
+```npm intall```
 
-4. Start servers
+4. Install React folders and files:
 
-```npm run dev``` (if using concurrently)
+```cd client && npm install```
 
-or
+5. Start servers
+
+```npm run dev``` (with concurrently)
+
+or if any issues with concurrently:
 
 1st terminal:
 
