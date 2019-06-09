@@ -1,87 +1,71 @@
 # Project Title
 
-One Paragraph of project description goes here
+Grocery list app allowing users to create, edit, add, mark/unmark as purchased, and remove grocery items from a shopping list. Allows for simultaneous sessions. Built with ReactJS utilizing React Router, Express (allows API access), Mongoose for the database and SASS for styling.
+
+https://jasonduquain-grocerylist.herokuapp.com/
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+1. Clone repo
+
+2. Put the ".env" file at root. This file has config variables for mLab connection string and express-session secret.
+
+3. Install all dependencies:
+
+```npm intall```` 
+
+4. Start servers
+
+```npm run dev```` (if using concurrently)
+
+or
+
+1st terminal:
+
+```node server.js```
+
+2nd terminal:
+
+```cd client && npm start```
+
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+To run, first make sure you have Node installed. You can type `node -v` to find your version:
 
 ```
-Give examples
+$ node -v 
+v8.11.2
 ```
 
-### Installing
+If you do not have Node installed. You can download from their website: https://nodejs.org/en/download/
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+Test-Driven Development(TDD) was used in building this app utilizing Jasmine (https://jasmine.github.io/). All the tests can be found in the `/spec/integration` folder. Integration tests were written for the different models with CRUD operations in mind.  From the command line you can use `npm test <path>` to test. 
 
-### Break down into end to end tests
-
-Explain what these tests test and why
+Example:
 
 ```
-Give an example
+$ npm test spec/integration/items_spec.js
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+The app is deployed using Heroku. [Heroku](https://heroku.com/) 
+[The Grocery List](https://jasonduquain-grocerylist.herokuapp.com/)
+
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [React](https://reactjs.org/) - The front-end library
+* [Node](https://nodejs.org/en/) - Javascript runtime for server-side management
+* [Express](https://expressjs.com/) - Web framework for Node.js.
+* [Mongoose](https://mongoosejs.com/) - ODM for mongoDB.
+* [SASS](https://sass-lang.com/) - CSS preprocessor.
 
-## Contributing
+## Author
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* **Jason Duquain**
