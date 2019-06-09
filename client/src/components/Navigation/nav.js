@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 
 import '../../App.scss';
+import './nav.scss';
 import axios from 'axios';
 
 
@@ -22,7 +23,7 @@ class Nav extends Component {
                         loggedIn: false,
                         username: null
                     });
-                    /** 20190608 needed to add withRouter to get this to work since Nav component is outside of the routes **/
+                    
                     this.props.history.push('/');
                 }
         }).catch(err => {
@@ -32,41 +33,55 @@ class Nav extends Component {
 	
     render() {
         return (
-            <div>
-                <header>
-                    <div>
-                        {this.props.loggedIn ? (
-                            <section>
-                                <NavLink to="/" activeClassName="is-active" exact={true}>
-                                    <span>HOME</span>
-                                </NavLink>
-                                <NavLink to="#" onClick={this.logout} style={{display: "inline-block", padding: "2em"}}>
-                                    <span>LOGOUT</span>
-                                </NavLink>
-                                <NavLink to="/list" activeClassName="is-active">
-                                    <span>GROCERY LIST</span>
-                                </NavLink>
-                                <NavLink to="/create" activeClassName="is-active">
-                                    <span>CREATE ITEM</span>
-                                </NavLink>
-                            </section>
-                        ) : (
-                            <section>
-                                <NavLink to="/" activeClassName="is-active" exact={true}>
-                                    <span>HOME</span>
-                                </NavLink>
-                                <NavLink to="/login" activeClassName="is-active">
-                                    <span>LOGIN</span>
-                                </NavLink>
-                                <NavLink to="/signup" activeClassName="is-active">
-                                    <span>SIGNUP</span>
-                                </NavLink>
-                            </section>
-                            )}
-                    </div>
+                <header className="header">
+                    {this.props.loggedIn ? (
+                        <nav className="header__nav">
+                            <ul className="header__list">
+                                <li className="header__item">
+                                    <NavLink className="header__link" to="/" activeClassName="is-active" exact={true}>
+                                        Home
+                                    </NavLink>
+                                </li>
+                                <li className="header__item">
+                                    <NavLink className="header__link" to="/list" activeClassName="is-active">
+                                        Grocery List
+                                    </NavLink>
+                                </li>
+                                <li className="header__item">
+                                    <NavLink className="header__link" to="/create" activeClassName="is-active">
+                                        Create Item
+                                    </NavLink>
+                                </li>
+                                <li className="header__item">
+                                    <NavLink className="header__link" to="#" onClick={this.logout}>
+                                        Logout
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        </nav>
+                    ) : (
+                        <nav className="header__nav">
+                            <ul className="header__list">
+                                <li className="header__item">
+                                    <NavLink className="header__link" to="/" activeClassName="is-active" exact={true}>
+                                        Home
+                                    </NavLink>
+                                </li>
+                                <li className="header__item header__item-title">The Grocery List</li>
+                                <li className="header__item">
+                                    <NavLink className="header__link" to="/login" activeClassName="is-active">
+                                        Login
+                                    </NavLink>
+                                </li>
+                                <li className="header__item">
+                                    <NavLink className="header__link" to="/signup" activeClassName="is-active">
+                                        Signup
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        </nav>
+                        )}
                 </header>
-            </div>
-
         );
 
     }
